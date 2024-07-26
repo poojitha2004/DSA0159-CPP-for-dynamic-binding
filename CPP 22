@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string>
+
+// Base class Employee
+class Employee {
+protected:
+    std::string name;
+    int id;
+    double salary;
+
+public:
+    // Constructor
+    Employee(const std::string& n, int i, double s) : name(n), id(i), salary(s) {}
+
+    // Getter and Setter for name
+    void setName(const std::string& n) { name = n; }
+    std::string getName() const { return name; }
+
+    // Getter and Setter for id
+    void setId(int i) { id = i; }
+    int getId() const { return id; }
+
+    // Getter and Setter for salary
+    void setSalary(double s) { salary = s; }
+    double getSalary() const { return salary; }
+
+    // Virtual destructor
+    virtual ~Employee() {}
+};
+
+// Derived class Manager from Employee
+class Manager : public Employee {
+private:
+    std::string department;
+    double bonus;
+
+public:
+    // Constructor
+    Manager(const std::string& n, int i, double s, const std::string& d, double b)
+        : Employee(n, i, s), department(d), bonus(b) {}
+
+    // Getter and Setter for department
+    void setDepartment(const std::string& d) { department = d; }
+    std::string getDepartment() const { return department; }
+
+    // Getter and Setter for bonus
+    void setBonus(double b) { bonus = b; }
+    double getBonus() const { return bonus; }
+};
+
+// Derived class Engineer from Employee
+class Engineer : public Employee {
+private:
+    std::string specialty;
+    int hours;
+
+public:
+    // Constructor
+    Engineer(const std::string& n, int i, double s, const std::string& sp, int h)
+        : Employee(n, i, s), specialty(sp), hours(h) {}
+
+    // Getter and Setter for specialty
+    void setSpecialty(const std::string& sp) { specialty = sp; }
+    std::string getSpecialty() const { return specialty; }
+
+    // Getter and Setter for hours
+    void setHours(int h) { hours = h; }
+    int getHours() const { return hours; }
+};
+
+int main() {
+    // Create a Manager object
+    Manager mgr("Alice Johnson", 101, 75000.0, "Sales", 5000.0);
+
+    // Create an Engineer object
+    Engineer eng("Bob Smith", 202, 60000.0, "Software", 40);
+
+    // Display Manager details
+    std::cout << "Manager Details:" << std::endl;
+    std::cout << "Name: " << mgr.getName() << std::endl;
+    std::cout << "ID: " << mgr.getId() << std::endl;
+    std::cout << "Salary: $" << mgr.getSalary() << std::endl;
+    std::cout << "Department: " << mgr.getDepartment() << std::endl;
+    std::cout << "Bonus: $" << mgr.getBonus() << std::endl;
+
+    // Display Engineer details
+    std::cout << "\nEngineer Details:" << std::endl;
+    std::cout << "Name: " << eng.getName() << std::endl;
+    std::cout << "ID: " << eng.getId() << std::endl;
+    std::cout << "Salary: $" << eng.getSalary() << std::endl;
+    std::cout << "Specialty: " << eng.getSpecialty() << std::endl;
+    std::cout << "Hours: " << eng.getHours() << " hours" << std::endl;
+
+    return 0;
+}
