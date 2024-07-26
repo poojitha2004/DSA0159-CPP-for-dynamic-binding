@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cmath> // For pow function
+
+// Function to determine if a number is an Armstrong number
+bool isArmstrong(int number) {
+    int originalNumber = number;
+    int sum = 0;
+    int numDigits = 0;
+
+    // Count the number of digits
+    while (number > 0) {
+        number /= 10;
+        ++numDigits;
+    }
+
+    // Restore the original number
+    number = originalNumber;
+
+    // Calculate the sum of each digit raised to the power of numDigits
+    while (number > 0) {
+        int digit = number % 10;
+        sum += std::pow(digit, numDigits);
+        number /= 10;
+    }
+
+    // Check if the sum is equal to the original number
+    return (sum == originalNumber);
+}
+
+int main() {
+    int num;
+
+    // Prompt the user to enter a number
+    std::cout << "Enter an integer: ";
+    std::cin >> num;
+
+    // Check if the number is an Armstrong number
+    if (isArmstrong(num)) {
+        std::cout << num << " is an Armstrong number." << std::endl;
+    } else {
+        std::cout << num << " is not an Armstrong number." << std::endl;
+    }
+
+    return 0;
+}
