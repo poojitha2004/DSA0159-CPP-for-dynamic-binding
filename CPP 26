@@ -1,0 +1,44 @@
+#include <iostream>
+
+// Function to calculate the factorial of a number
+int factorial(int n) {
+    if (n == 0 || n == 1) return 1;
+    int result = 1;
+    for (int i = 2; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+// Function to check if a number is a strong number
+bool isStrongNumber(int num) {
+    int originalNum = num;
+    int sum = 0;
+
+    // Calculate the sum of factorials of digits
+    while (num > 0) {
+        int digit = num % 10;
+        sum += factorial(digit);
+        num /= 10;
+    }
+
+    // Check if the sum is equal to the original number
+    return sum == originalNum;
+}
+
+int main() {
+    int number;
+
+    // Read an integer from the user
+    std::cout << "Enter an integer: ";
+    std::cin >> number;
+
+    // Check if the number is a strong number
+    if (isStrongNumber(number)) {
+        std::cout << number << " is a strong number." << std::endl;
+    } else {
+        std::cout << number << " is not a strong number." << std::endl;
+    }
+
+    return 0;
+}
