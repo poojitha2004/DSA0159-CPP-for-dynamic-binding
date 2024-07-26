@@ -1,0 +1,48 @@
+#include <iostream>
+
+// Class to represent a complex number
+class Complex {
+private:
+    double real;
+    double imaginary;
+
+public:
+    // Constructor to initialize the complex number
+    Complex(double r = 0.0, double i = 0.0) : real(r), imaginary(i) {}
+
+    // Overload the + operator
+    Complex operator+(const Complex& other) const {
+        // Create a new Complex object that is the sum of the two
+        return Complex(real + other.real, imaginary + other.imaginary);
+    }
+
+    // Function to display the complex number
+    void display() const {
+        std::cout << real;
+        if (imaginary >= 0) {
+            std::cout << " + " << imaginary << "i";
+        } else {
+            std::cout << " - " << -imaginary << "i";
+        }
+        std::cout << std::endl;
+    }
+};
+
+int main() {
+    // Create two complex numbers
+    Complex c1(3.4, 5.6);
+    Complex c2(1.2, -3.4);
+
+    // Add the two complex numbers using the overloaded + operator
+    Complex result = c1 + c2;
+
+    // Display the result
+    std::cout << "The sum of ";
+    c1.display();
+    std::cout << "and ";
+    c2.display();
+    std::cout << "is ";
+    result.display();
+
+    return 0;
+}
