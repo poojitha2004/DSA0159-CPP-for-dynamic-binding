@@ -1,0 +1,35 @@
+#include <iostream>
+
+// Define a function that we will point to
+void displayMessage() {
+    std::cout << "Hello from the function!" << std::endl;
+}
+
+// Define a function with an integer parameter
+void displayNumber(int num) {
+    std::cout << "The number is: " << num << std::endl;
+}
+
+int main() {
+    // Pointer to a function that takes no parameters and returns void
+    void (*funcPtr)();
+
+    // Assign the address of displayMessage to funcPtr
+    funcPtr = &displayMessage;
+
+    // Call the function using the pointer
+    std::cout << "Calling function using pointer:" << std::endl;
+    (*funcPtr)(); // or funcPtr(); (both are equivalent)
+
+    // Pointer to a function that takes an integer parameter and returns void
+    void (*numFuncPtr)(int);
+
+    // Assign the address of displayNumber to numFuncPtr
+    numFuncPtr = &displayNumber;
+
+    // Call the function using the pointer with an argument
+    std::cout << "Calling function with argument using pointer:" << std::endl;
+    numFuncPtr(42); // Calls displayNumber(42)
+
+    return 0;
+}
