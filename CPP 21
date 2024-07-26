@@ -1,0 +1,52 @@
+#include <iostream>
+
+// Base class Animal
+class Animal {
+public:
+    // Virtual function move() that can be overridden by derived classes
+    virtual void move() const {
+        std::cout << "Animal moves in some way." << std::endl;
+    }
+
+    // Virtual destructor to ensure proper cleanup of derived classes
+    virtual ~Animal() {}
+};
+
+// Derived class Bird from Animal
+class Bird : public Animal {
+public:
+    // Override the move() function for Bird
+    void move() const override {
+        std::cout << "Bird flies in the sky." << std::endl;
+    }
+};
+
+// Derived class Fish from Animal
+class Fish : public Animal {
+public:
+    // Override the move() function for Fish
+    void move() const override {
+        std::cout << "Fish swims in the water." << std::endl;
+    }
+};
+
+int main() {
+    // Create objects of Bird and Fish
+    Bird myBird;
+    Fish myFish;
+
+    // Create pointers to Animal and point to Bird and Fish objects
+    Animal* animalPtr;
+
+    // Point to Bird object
+    animalPtr = &myBird;
+    std::cout << "Animal pointer points to Bird:" << std::endl;
+    animalPtr->move(); // Calls Bird's move() function
+
+    // Point to Fish object
+    animalPtr = &myFish;
+    std::cout << "Animal pointer points to Fish:" << std::endl;
+    animalPtr->move(); // Calls Fish's move() function
+
+    return 0;
+}
