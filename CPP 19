@@ -1,0 +1,33 @@
+#include <iostream>
+
+int main() {
+    int n = 5; // Number of rows in the upper part of the pattern
+
+    // Print the upper part of the pattern
+    for (int i = 1; i <= n; ++i) {
+        // Print leading spaces
+        for (int j = i; j < n; ++j) {
+            std::cout << " ";
+        }
+        // Print stars
+        for (int k = 1; k <= (2 * i - 1); ++k) {
+            std::cout << "*";
+        }
+        std::cout << std::endl;
+    }
+
+    // Print the lower part of the pattern
+    for (int i = n - 1; i >= 1; --i) {
+        // Print leading spaces
+        for (int j = n; j > i; --j) {
+            std::cout << " ";
+        }
+        // Print stars
+        for (int k = 1; k <= (2 * i - 1); ++k) {
+            std::cout << "*";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
