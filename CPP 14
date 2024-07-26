@@ -1,0 +1,74 @@
+#include <iostream>
+#include <cmath> // For sqrt function
+
+// Base class Shape with data members height and width
+class Shape {
+protected:
+    double height;
+    double width;
+
+public:
+    // Constructor to initialize height and width
+    Shape(double h = 0.0, double w = 0.0) : height(h), width(w) {}
+
+    // Virtual destructor
+    virtual ~Shape() {}
+
+    // Virtual functions to calculate area and perimeter
+    virtual double area() const = 0;
+    virtual double perimeter() const = 0;
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+public:
+    // Constructor to initialize Rectangle dimensions
+    Rectangle(double h, double w) : Shape(h, w) {}
+
+    // Override area function
+    double area() const override {
+        return height * width;
+    }
+
+    // Override perimeter function
+    double perimeter() const override {
+        return 2 * (height + width);
+    }
+};
+
+// Derived class Triangle
+class Triangle : public Shape {
+private:
+    double side1;
+    double side2;
+
+public:
+    // Constructor to initialize Triangle dimensions and sides
+    Triangle(double h, double w, double s1, double s2) : Shape(h, w), side1(s1), side2(s2) {}
+
+    // Override area function (assuming width is base and height is height)
+    double area() const override {
+        return 0.5 * width * height;
+    }
+
+    // Override perimeter function
+    double perimeter() const override {
+        return width + side1 + side2;
+    }
+};
+
+int main() {
+    // Create a Rectangle object
+    Rectangle rect(5.0, 3.0);
+    std::cout << "Rectangle:" << std::endl;
+    std::cout << "Area: " << rect.area() << std::endl;
+    std::cout << "Perimeter: " << rect.perimeter() << std::endl;
+
+    // Create a Triangle object (assuming base, height, and two other sides)
+    Triangle tri(4.0, 6.0, 5.0, 5.0);
+    std::cout << "\nTriangle:" << std::endl;
+    std::cout << "Area: " << tri.area() << std::endl;
+    std::cout << "Perimeter: " << tri.perimeter() << std::endl;
+
+    return 0;
+}
