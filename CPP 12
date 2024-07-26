@@ -1,0 +1,29 @@
+#include <iostream>
+
+int countOccurrences(const int arr[], int size, int value) {
+    int count = 0;
+    
+    // Iterate through the array and count occurrences of the value
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == value) {
+            ++count;
+        }
+    }
+    
+    return count;
+}
+
+int main() {
+    // Example array and value to search for
+    int array[] = {1, 2, 3, 4, 2, 5, 2, 6};
+    int size = sizeof(array) / sizeof(array[0]);
+    int valueToFind = 2;
+
+    // Call the function to count occurrences
+    int occurrences = countOccurrences(array, size, valueToFind);
+
+    // Output the result
+    std::cout << "The value " << valueToFind << " occurs " << occurrences << " times in the array." << std::endl;
+
+    return 0;
+}
