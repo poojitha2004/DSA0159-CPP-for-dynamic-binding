@@ -1,0 +1,54 @@
+#include <iostream>
+
+class Counter {
+private:
+    int value;
+
+public:
+    // Constructor to initialize value
+    Counter(int v = 0) : value(v) {}
+
+    // Prefix increment operator overload
+    Counter& operator++() {
+        ++value; // Increment value
+        return *this; // Return the incremented object
+    }
+
+    // Postfix increment operator overload
+    Counter operator++(int) {
+        Counter temp = *this; // Create a copy of the current object
+        ++value; // Increment value
+        return temp; // Return the original object before increment
+    }
+
+    // Function to display the value
+    void display() const {
+        std::cout << "Value: " << value << std::endl;
+    }
+};
+
+int main() {
+    Counter counter1(5);
+    Counter counter2(10);
+
+    std::cout << "Initial values:" << std::endl;
+    counter1.display(); // Should display 5
+    counter2.display(); // Should display 10
+
+    // Use prefix increment operator
+    ++counter1;
+    std::cout << "After prefix increment:" << std::endl;
+    counter1.display(); // Should display 6
+
+    // Use postfix increment operator
+    counter2++;
+    std::cout << "After postfix increment:" << std::endl;
+    counter2.display(); // Should display 11
+
+    // Display the result of postfix increment
+    Counter temp = counter2++;
+    std::cout << "Postfix increment result (should be 11):" << std::endl;
+    temp.display(); // Should display 10 (original value before increment)
+
+    return 0;
+}
