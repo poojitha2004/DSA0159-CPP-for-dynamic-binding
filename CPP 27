@@ -1,0 +1,28 @@
+#include <iostream>
+
+int main() {
+    int n = 5; // Number of rows in the pattern
+
+    // Loop through each row
+    for (int i = 1; i <= n; ++i) {
+        // Print leading spaces
+        for (int j = i; j < n; ++j) {
+            std::cout << " ";
+        }
+
+        // Print increasing numbers
+        for (int k = 1; k <= i; ++k) {
+            std::cout << k;
+        }
+
+        // Print decreasing numbers
+        for (int l = i - 1; l > 0; --l) {
+            std::cout << l;
+        }
+
+        // Move to the next line
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
