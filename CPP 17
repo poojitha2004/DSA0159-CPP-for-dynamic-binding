@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main() {
+    int num1, num2;
+
+    // Read two integers from the user
+    std::cout << "Enter the first integer: ";
+    std::cin >> num1;
+    std::cout << "Enter the second integer: ";
+    std::cin >> num2;
+
+    // Use the conditional operator to determine which number is greater
+    int greater = (num1 > num2) ? num1 : num2;
+
+    // Output the result
+    std::cout << "The greater number is: " << greater << std::endl;
+
+    return 0;
+}
