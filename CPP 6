@@ -1,0 +1,93 @@
+#include <iostream>
+#include <string>
+
+// Base class Person
+class Person {
+protected:
+    std::string name;
+    int age;
+    char gender;
+
+public:
+    // Default constructor
+    Person() : name(""), age(0), gender('M') {}
+
+    // Parameterized constructor
+    Person(const std::string& n, int a, char g) : name(n), age(a), gender(g) {}
+
+    // Setters
+    void setName(const std::string& n) { name = n; }
+    void setAge(int a) { age = a; }
+    void setGender(char g) { gender = g; }
+
+    // Getters
+    std::string getName() const { return name; }
+    int getAge() const { return age; }
+    char getGender() const { return gender; }
+};
+
+// Derived class Student
+class Student : public Person {
+private:
+    int rollNumber;
+    std::string studentClass;
+
+public:
+    // Default constructor
+    Student() : Person(), rollNumber(0), studentClass("") {}
+
+    // Parameterized constructor
+    Student(const std::string& n, int a, char g, int r, const std::string& c)
+        : Person(n, a, g), rollNumber(r), studentClass(c) {}
+
+    // Setters
+    void setRollNumber(int r) { rollNumber = r; }
+    void setClass(const std::string& c) { studentClass = c; }
+
+    // Getters
+    int getRollNumber() const { return rollNumber; }
+    std::string getClass() const { return studentClass; }
+};
+
+// Derived class Teacher
+class Teacher : public Person {
+private:
+    std::string subject;
+    double salary;
+
+public:
+    // Default constructor
+    Teacher() : Person(), subject(""), salary(0.0) {}
+
+    // Parameterized constructor
+    Teacher(const std::string& n, int a, char g, const std::string& s, double sal)
+        : Person(n, a, g), subject(s), salary(sal) {}
+
+    // Setters
+    void setSubject(const std::string& s) { subject = s; }
+    void setSalary(double sal) { salary = sal; }
+
+    // Getters
+    std::string getSubject() const { return subject; }
+    double getSalary() const { return salary; }
+};
+
+int main() {
+    // Create and initialize a Student object
+    Student student("John Doe", 20, 'M', 12345, "10th Grade");
+    std::cout << "Student Name: " << student.getName() << std::endl;
+    std::cout << "Student Age: " << student.getAge() << std::endl;
+    std::cout << "Student Gender: " << student.getGender() << std::endl;
+    std::cout << "Student Roll Number: " << student.getRollNumber() << std::endl;
+    std::cout << "Student Class: " << student.getClass() << std::endl;
+
+    // Create and initialize a Teacher object
+    Teacher teacher("Jane Smith", 35, 'F', "Mathematics", 50000.0);
+    std::cout << "\nTeacher Name: " << teacher.getName() << std::endl;
+    std::cout << "Teacher Age: " << teacher.getAge() << std::endl;
+    std::cout << "Teacher Gender: " << teacher.getGender() << std::endl;
+    std::cout << "Teacher Subject: " << teacher.getSubject() << std::endl;
+    std::cout << "Teacher Salary: $" << teacher.getSalary() << std::endl;
+
+    return 0;
+}
