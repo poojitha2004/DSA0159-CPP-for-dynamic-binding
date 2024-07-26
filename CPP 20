@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath> // For sqrt function
+
+// Function to check if a number is prime
+bool isPrime(int num) {
+    // Handle edge cases
+    if (num <= 1) return false; // 0 and 1 are not prime numbers
+    if (num <= 3) return true;  // 2 and 3 are prime numbers
+
+    // Optimization: Check for divisibility by 2 and 3
+    if (num % 2 == 0 || num % 3 == 0) return false;
+
+    // Check for factors from 5 to sqrt(num)
+    for (int i = 5; i * i <= num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0) return false;
+    }
+
+    return true;
+}
+
+int main() {
+    int number;
+
+    // Read an integer from the user
+    std::cout << "Enter an integer: ";
+    std::cin >> number;
+
+    // Check if the number is a prime number
+    if (isPrime(number)) {
+        std::cout << number << " is a prime number." << std::endl;
+    } else {
+        std::cout << number << " is not a prime number." << std::endl;
+    }
+
+    return 0;
+}
