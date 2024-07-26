@@ -1,0 +1,47 @@
+#include <iostream>
+
+// Base class
+class Vehicle {
+public:
+    // Virtual function to be overridden in derived classes
+    virtual void drive() const {
+        std::cout << "Driving a vehicle." << std::endl;
+    }
+
+    // Virtual destructor to ensure proper cleanup of derived class objects
+    virtual ~Vehicle() = default;
+};
+
+// Derived class Car
+class Car : public Vehicle {
+public:
+    // Override the drive function
+    void drive() const override {
+        std::cout << "Driving a car." << std::endl;
+    }
+};
+
+// Derived class Truck
+class Truck : public Vehicle {
+public:
+    // Override the drive function
+    void drive() const override {
+        std::cout << "Driving a truck." << std::endl;
+    }
+};
+
+int main() {
+    // Create objects of Car and Truck
+    Vehicle* vehicle1 = new Car();
+    Vehicle* vehicle2 = new Truck();
+
+    // Call the drive function for each object
+    vehicle1->drive(); // Output: Driving a car.
+    vehicle2->drive(); // Output: Driving a truck.
+
+    // Clean up
+    delete vehicle1;
+    delete vehicle2;
+
+    return 0;
+}
