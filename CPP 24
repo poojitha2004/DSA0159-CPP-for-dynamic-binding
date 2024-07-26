@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+// Class definition
+class Person {
+private:
+    std::string name;
+    int age;
+    std::string city;
+
+public:
+    // Constructor
+    Person(const std::string& n, int a, const std::string& c) 
+        : name(n), age(a), city(c) {}
+
+    // Function to display attributes
+    void display() const {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Age: " << age << std::endl;
+        std::cout << "City: " << city << std::endl;
+    }
+};
+
+int main() {
+    // Create an object of Person
+    Person person1("Alice", 30, "New York");
+
+    // Create a pointer to the Person object
+    Person* ptrPerson = &person1;
+
+    // Display attributes using the pointer
+    std::cout << "Displaying attributes using pointer:" << std::endl;
+    ptrPerson->display(); // Access the display method through the pointer
+
+    return 0;
+}
