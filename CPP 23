@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+// Class definition
+class Point {
+private:
+    int x, y;
+
+public:
+    // Constructor
+    Point(int xCoord, int yCoord) : x(xCoord), y(yCoord) {}
+
+    // Overload the == operator
+    bool operator==(const Point& other) const {
+        return (x == other.x) && (y == other.y);
+    }
+
+    // Function to display the point
+    void display() const {
+        std::cout << "(" << x << ", " << y << ")" << std::endl;
+    }
+};
+
+int main() {
+    // Create two Point objects
+    Point p1(10, 20);
+    Point p2(10, 20);
+    Point p3(15, 25);
+
+    // Compare points using the overloaded == operator
+    if (p1 == p2) {
+        std::cout << "p1 and p2 are equal." << std::endl;
+    } else {
+        std::cout << "p1 and p2 are not equal." << std::endl;
+    }
+
+    if (p1 == p3) {
+        std::cout << "p1 and p3 are equal." << std::endl;
+    } else {
+        std::cout << "p1 and p3 are not equal." << std::endl;
+    }
+
+    return 0;
+}
