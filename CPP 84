@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class Person
+class Person {
+protected:
+    string name;
+    int age;
+    string gender;
+
+public:
+    // Constructor
+    Person(string n = "", int a = 0, string g = "") : name(n), age(a), gender(g) {}
+
+    // Getter and Setter for name
+    string getName() const { return name; }
+    void setName(const string& n) { name = n; }
+
+    // Getter and Setter for age
+    int getAge() const { return age; }
+    void setAge(int a) { age = a; }
+
+    // Getter and Setter for gender
+    string getGender() const { return gender; }
+    void setGender(const string& g) { gender = g; }
+};
+
+// Derived class Student
+class Student : public Person {
+private:
+    int rollNumber;
+    string className;
+
+public:
+    // Constructor
+    Student(string n = "", int a = 0, string g = "", int r = 0, string c = "")
+        : Person(n, a, g), rollNumber(r), className(c) {}
+
+    // Getter and Setter for rollNumber
+    int getRollNumber() const { return rollNumber; }
+    void setRollNumber(int r) { rollNumber = r; }
+
+    // Getter and Setter for className
+    string getClassName() const { return className; }
+    void setClassName(const string& c) { className = c; }
+};
+
+// Derived class Teacher
+class Teacher : public Person {
+private:
+    string subject;
+    double salary;
+
+public:
+    // Constructor
+    Teacher(string n = "", int a = 0, string g = "", string s = "", double sal = 0.0)
+        : Person(n, a, g), subject(s), salary(sal) {}
+
+    // Getter and Setter for subject
+    string getSubject() const { return subject; }
+    void setSubject(const string& s) { subject = s; }
+
+    // Getter and Setter for salary
+    double getSalary() const { return salary; }
+    void setSalary(double sal) { salary = sal; }
+};
+
+int main() {
+    // Create a Student object
+    Student student("John Doe", 20, "Male", 12345, "Computer Science");
+    cout << "Student Details:" << endl;
+    cout << "Name: " << student.getName() << endl;
+    cout << "Age: " << student.getAge() << endl;
+    cout << "Gender: " << student.getGender() << endl;
+    cout << "Roll Number: " << student.getRollNumber() << endl;
+    cout << "Class: " << student.getClassName() << endl;
+
+    // Create a Teacher object
+    Teacher teacher("Jane Smith", 35, "Female", "Mathematics", 50000.0);
+    cout << "\nTeacher Details:" << endl;
+    cout << "Name: " << teacher.getName() << endl;
+    cout << "Age: " << teacher.getAge() << endl;
+    cout << "Gender: " << teacher.getGender() << endl;
+    cout << "Subject: " << teacher.getSubject() << endl;
+    cout << "Salary: $" << teacher.getSalary() << endl;
+
+    return 0;
+}
