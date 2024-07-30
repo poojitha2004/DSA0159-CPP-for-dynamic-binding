@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int rollNumber;
+    char grade;
+
+public:
+    // Constructor
+    Student(const string& studentName, int studentRollNumber, char studentGrade)
+        : name(studentName), rollNumber(studentRollNumber), grade(studentGrade) {
+        cout << "Student created: " << name << ", Roll Number: " << rollNumber << ", Grade: " << grade << "." << endl;
+    }
+
+    // Destructor
+    ~Student() {
+        cout << "Student object destroyed: " << name << ", Roll Number: " << rollNumber << "." << endl;
+    }
+
+    // Method to display student details
+    void display() const {
+        cout << "Student Details:" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+int main() {
+    // Create a Student object
+    Student student1("Alice Johnson", 101, 'A');
+
+    // Display student details
+    student1.display();
+
+    // Student object is automatically destroyed at the end of scope
+    return 0;
+}
