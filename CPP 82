@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class Animal
+class Animal {
+protected:
+    string name;
+    string species;
+    int age;
+
+public:
+    // Constructor
+    Animal(string n = "", string s = "", int a = 0) : name(n), species(s), age(a) {}
+
+    // Getter and Setter for name
+    string getName() const { return name; }
+    void setName(const string& n) { name = n; }
+
+    // Getter and Setter for species
+    string getSpecies() const { return species; }
+    void setSpecies(const string& s) { species = s; }
+
+    // Getter and Setter for age
+    int getAge() const { return age; }
+    void setAge(int a) { age = a; }
+};
+
+// Derived class Cat
+class Cat : public Animal {
+private:
+    string color;
+    string breed;
+
+public:
+    // Constructor
+    Cat(string n = "", string s = "", int a = 0, string c = "", string b = "")
+        : Animal(n, s, a), color(c), breed(b) {}
+
+    // Getter and Setter for color
+    string getColor() const { return color; }
+    void setColor(const string& c) { color = c; }
+
+    // Getter and Setter for breed
+    string getBreed() const { return breed; }
+    void setBreed(const string& b) { breed = b; }
+};
+
+// Derived class Dog
+class Dog : public Animal {
+private:
+    double weight;
+    string breed;
+
+public:
+    // Constructor
+    Dog(string n = "", string s = "", int a = 0, double w = 0.0, string b = "")
+        : Animal(n, s, a), weight(w), breed(b) {}
+
+    // Getter and Setter for weight
+    double getWeight() const { return weight; }
+    void setWeight(double w) { weight = w; }
+
+    // Getter and Setter for breed
+    string getBreed() const { return breed; }
+    void setBreed(const string& b) { breed = b; }
+};
+
+int main() {
+    // Create a Cat object
+    Cat myCat("Whiskers", "Feline", 3, "Gray", "Siamese");
+    cout << "Cat Details:" << endl;
+    cout << "Name: " << myCat.getName() << endl;
+    cout << "Species: " << myCat.getSpecies() << endl;
+    cout << "Age: " << myCat.getAge() << endl;
+    cout << "Color: " << myCat.getColor() << endl;
+    cout << "Breed: " << myCat.getBreed() << endl;
+
+    // Create a Dog object
+    Dog myDog("Rex", "Canine", 5, 75.5, "German Shepherd");
+    cout << "\nDog Details:" << endl;
+    cout << "Name: " << myDog.getName() << endl;
+    cout << "Species: " << myDog.getSpecies() << endl;
+    cout << "Age: " << myDog.getAge() << endl;
+    cout << "Weight: " << myDog.getWeight() << " lbs" << endl;
+    cout << "Breed: " << myDog.getBreed() << endl;
+
+    return 0;
+}
