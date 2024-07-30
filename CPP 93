@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Define a class with some attributes
+class Person {
+public:
+    // Attributes
+    string name;
+    int age;
+
+    // Constructor
+    Person(string n, int a) : name(n), age(a) {}
+
+    // Method to display attributes
+    void display() const {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+int main() {
+    // Step 2: Create an object of the class
+    Person person("Alice", 30);
+
+    // Step 3: Create a pointer to the object
+    Person *ptr;
+
+    // Step 4: Assign the address of the object to the pointer
+    ptr = &person;
+
+    // Step 5: Use the pointer to access and display the attributes of the object
+    cout << "Using pointer to display object attributes:" << endl;
+    ptr->display();  // Use the arrow operator to call the method via the pointer
+
+    return 0;
+}
