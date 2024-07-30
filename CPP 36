@@ -1,0 +1,77 @@
+#include <iostream>
+
+void insertElement(int arr[], int& size, int element, int position) {
+    // Check if position is valid
+    if (position < 0 || position > size) {
+        std::cout << "Invalid position!" << std::endl;
+        return;
+    }
+
+    // Create a new array with an extra slot
+    int* newArr = new int[size + 1];
+
+    // Copy elements before the position
+    for (int i = 0; i < position; ++i) {
+        newArr[i] = arr[i];
+    }
+
+    // Insert the new element at the specified position
+    newArr[position] = element;
+
+    // Copy elements after the position
+    for (int i = position; i < size; ++i) {
+        newArr[i + 1] = arr[i];
+    }
+
+    // Update the size
+    ++size;
+
+    // Copy newArr to arr
+    for (int i = 0; i < size; ++i) {
+        arr[i] = newArr[i];
+    }
+
+    // Free the dynamically allocated memory for newArr
+    delete[] newArr;
+}
+
+void printArray(const int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int main() {
+    int size;
+
+    std::cout << "Enter the number of elements in the array: ";
+    std::cin >> size;
+
+    int* arr = new int[size]; // Dynamically allocate array
+
+    std::cout << "Enter " << size << " elements:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+
+    int element, position;
+
+    std::cout << "Enter the element to insert: ";
+    std::cin >> element;
+
+    std::cout << "Enter the position to insert the element: ";
+    std::cin >> position;
+
+    std::cout << "Original array:\n";
+    printArray(arr, size);
+
+    insertElement(arr, size, element, position);
+
+    std::cout << "Array after insertion:\n";
+    printArray(arr, size);
+
+    delete[] arr; // Free dynamically allocated memory
+
+    return 0;
+}
