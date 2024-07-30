@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Define the base class Animal with a virtual function eat()
+class Animal {
+public:
+    // Virtual function to be overridden in derived classes
+    virtual void eat() const {
+        cout << "Animal is eating." << endl;
+    }
+    
+    // Virtual destructor for proper cleanup
+    virtual ~Animal() = default;
+};
+
+// Step 2: Define the derived class Herbivore that overrides the eat() function
+class Herbivore : public Animal {
+public:
+    void eat() const override {
+        cout << "Herbivore is eating plants." << endl;
+    }
+};
+
+// Step 3: Define the derived class Carnivore that overrides the eat() function
+class Carnivore : public Animal {
+public:
+    void eat() const override {
+        cout << "Carnivore is eating meat." << endl;
+    }
+};
+
+int main() {
+    // Create objects of Herbivore and Carnivore
+    Herbivore herb;
+    Carnivore carn;
+
+    // Step 4: Demonstrate polymorphism by using base class pointers
+    Animal* a1 = &herb; // Pointer to base class Animal pointing to Herbivore object
+    Animal* a2 = &carn; // Pointer to base class Animal pointing to Carnivore object
+
+    // Call eat() using base class pointers
+    cout << "Calling eat() function via base class pointer:" << endl;
+    a1->eat(); // Calls Herbivore's eat()
+    a2->eat(); // Calls Carnivore's eat()
+
+    return 0;
+}
