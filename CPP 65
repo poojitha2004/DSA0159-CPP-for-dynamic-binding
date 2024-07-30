@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string title;
+    string author;
+
+public:
+    // Constructor
+    Book(const string& bookTitle, const string& bookAuthor)
+        : title(bookTitle), author(bookAuthor) {}
+
+    // Overload the == operator
+    bool operator==(const Book& other) const {
+        return (title == other.title) && (author == other.author);
+    }
+
+    // Method to display book details
+    void display() const {
+        cout << "Title: " << title << ", Author: " << author << endl;
+    }
+};
+
+int main() {
+    // Create two Book objects
+    Book book1("1984", "George Orwell");
+    Book book2("1984", "George Orwell");
+    Book book3("Brave New World", "Aldous Huxley");
+
+    // Compare the Book objects using the overloaded == operator
+    if (book1 == book2) {
+        cout << "book1 and book2 are the same." << endl;
+    } else {
+        cout << "book1 and book2 are different." << endl;
+    }
+
+    if (book1 == book3) {
+        cout << "book1 and book3 are the same." << endl;
+    } else {
+        cout << "book1 and book3 are different." << endl;
+    }
+
+    return 0;
+}
