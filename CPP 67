@@ -1,0 +1,74 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+class Array {
+private:
+    int* data;
+    int size;
+
+public:
+    // Constructor
+    Array(int s) : size(s) {
+        if (size <= 0) {
+            throw invalid_argument("Size must be positive.");
+        }
+        data = new int[size];
+        for (int i = 0; i < size; ++i) {
+            data[i] = 0; // Initialize all elements to 0
+        }
+    }
+
+    // Destructor
+    ~Array() {
+        delete[] data;
+    }
+
+    // Overload the [] operator for accessing elements
+    int& operator[](int index) {
+        if (index < 0 || index >= size) {
+            throw out_of_range("Index out of bounds.");
+        }
+        return data[index];
+    }
+
+    // Const version of the [] operator for accessing elements
+    const int& operator[](int index) const {
+        if (index < 0 || index >= size) {
+            throw out_of_range("Index out of bounds.");
+        }
+        return data[index];
+    }
+
+    // Method to get the size of the array
+    int getSize() const {
+        return size;
+    }
+};
+
+int main() {
+    try {
+        // Create an Array object with size 5
+        Array arr(5);
+
+        // Set values in the Array using the overloaded [] operator
+        for (int i = 0; i < arr.getSize(); ++i) {
+            arr[i] = i * 10;
+        }
+
+        // Display the values in the Array using the overloaded [] operator
+        for (int i = 0; i < arr.getSize(); ++i) {
+            cout << "Element at index " << i << ": " << arr[i] << endl;
+        }
+
+        // Attempt to access an out-of-bounds index (will throw exception)
+        cout << "Attempting to access out-of-bounds index:" << endl;
+        cout << arr[10] << endl;
+
+    } catch (const exception& e) {
+        // Handle exceptions
+        cout << "Exception: " << e.what() << endl;
+    }
+
+    return 0;
+}
