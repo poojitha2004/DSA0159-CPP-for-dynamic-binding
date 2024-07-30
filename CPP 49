@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+// Function to check if a number is prime
+bool isPrime(int n) {
+    if (n <= 1) {
+        return false; // Numbers less than or equal to 1 are not prime
+    }
+    if (n == 2) {
+        return true; // 2 is the only even prime number
+    }
+    if (n % 2 == 0) {
+        return false; // Even numbers greater than 2 are not prime
+    }
+    
+    // Check for factors from 3 to sqrt(n)
+    for (int i = 3; i * i <= n; i += 2) {
+        if (n % i == 0) {
+            return false; // Found a factor other than 1 and n
+        }
+    }
+    
+    return true; // No factors found, so n is prime
+}
+
+int main() {
+    int number;
+
+    cout << "Enter a number to check if it is prime: ";
+    cin >> number;
+
+    if (isPrime(number)) {
+        cout << number << " is a prime number." << endl;
+    } else {
+        cout << number << " is not a prime number." << endl;
+    }
+
+    return 0;
+}
