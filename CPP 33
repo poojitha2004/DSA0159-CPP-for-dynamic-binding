@@ -1,0 +1,32 @@
+#include <iostream>
+#include <iomanip>  // For std::setw
+
+// Function to print Pascal's Triangle
+void printPascalsTriangle(int rows) {
+    // Loop through each row
+    for (int i = 0; i < rows; ++i) {
+        int number = 1;  // Start with 1 for each row
+
+        // Print leading spaces for alignment
+        std::cout << std::setw(rows - i);
+
+        // Print numbers for the current row
+        for (int j = 0; j <= i; ++j) {
+            std::cout << number << " ";
+            number = number * (i - j) / (j + 1);  // Compute the next number in the row
+        }
+
+        std::cout << std::endl;  // Move to the next line after each row
+    }
+}
+
+int main() {
+    int rows;
+
+    std::cout << "Enter the number of rows for Pascal's Triangle: ";
+    std::cin >> rows;
+
+    printPascalsTriangle(rows);
+
+    return 0;
+}
