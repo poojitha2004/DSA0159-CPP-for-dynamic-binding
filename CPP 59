@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+private:
+    double length;
+    double width;
+
+public:
+    // Constructor
+    Rectangle(double l, double w) : length(l), width(w) {
+        cout << "Rectangle created with length " << length << " and width " << width << "." << endl;
+    }
+
+    // Destructor
+    ~Rectangle() {
+        cout << "Rectangle with length " << length << " and width " << width << " is being destroyed." << endl;
+    }
+
+    // Method to calculate the area of the rectangle
+    double area() const {
+        return length * width;
+    }
+
+    // Method to calculate the perimeter of the rectangle
+    double perimeter() const {
+        return 2 * (length + width);
+    }
+
+    // Method to display the rectangle's details
+    void display() const {
+        cout << "Rectangle Details:" << endl;
+        cout << "Length: " << length << endl;
+        cout << "Width: " << width << endl;
+        cout << "Area: " << area() << endl;
+        cout << "Perimeter: " << perimeter() << endl;
+    }
+};
+
+int main() {
+    // Create a Rectangle object
+    Rectangle myRectangle(10.0, 5.0);
+
+    // Display rectangle details
+    myRectangle.display();
+
+    // Rectangle is automatically destroyed at the end of scope
+    return 0;
+}
