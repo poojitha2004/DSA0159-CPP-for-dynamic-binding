@@ -1,0 +1,80 @@
+#include <iostream>
+#include <cmath>    // For sqrt function
+using namespace std;
+
+// Base class Shape
+class Shape {
+protected:
+    double height;
+    double width;
+
+public:
+    // Constructor to initialize height and width
+    Shape(double h = 0, double w = 0) : height(h), width(w) {}
+
+    // Setters for height and width
+    void setHeight(double h) { height = h; }
+    void setWidth(double w) { width = w; }
+
+    // Getters for height and width
+    double getHeight() const { return height; }
+    double getWidth() const { return width; }
+
+    // Pure virtual functions to be implemented by derived classes
+    virtual double area() const = 0;
+    virtual double perimeter() const = 0;
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+public:
+    // Constructor to initialize Rectangle dimensions
+    Rectangle(double h = 0, double w = 0) : Shape(h, w) {}
+
+    // Override area function
+    double area() const override {
+        return height * width;
+    }
+
+    // Override perimeter function
+    double perimeter() const override {
+        return 2 * (height + width);
+    }
+};
+
+// Derived class Triangle
+class Triangle : public Shape {
+public:
+    // Constructor to initialize Triangle dimensions
+    Triangle(double h = 0, double w = 0) : Shape(h, w) {}
+
+    // Override area function
+    double area() const override {
+        return 0.5 * height * width;
+    }
+
+    // Override perimeter function (assuming it is a right-angled triangle)
+    double perimeter() const override {
+        return height + width + sqrt(height * height + width * width);
+    }
+};
+
+int main() {
+    // Create a Rectangle object
+    Rectangle rect(5, 3);
+    cout << "Rectangle:" << endl;
+    cout << "Height: " << rect.getHeight() << endl;
+    cout << "Width: " << rect.getWidth() << endl;
+    cout << "Area: " << rect.area() << endl;
+    cout << "Perimeter: " << rect.perimeter() << endl;
+
+    // Create a Triangle object
+    Triangle tri(5, 3);
+    cout << "\nTriangle:" << endl;
+    cout << "Height: " << tri.getHeight() << endl;
+    cout << "Width: " << tri.getWidth() << endl;
+    cout << "Area: " << tri.area() << endl;
+    cout << "Perimeter: " << tri.perimeter() << endl;
+
+    return 0;
+}
