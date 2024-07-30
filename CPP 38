@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int findSum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int n;
+
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Array size must be positive." << endl;
+        return 1;
+    }
+
+    int arr[n];
+    cout << "Enter " << n << " elements: ";
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    int sum = findSum(arr, n);
+    cout << "Sum of all elements: " << sum << endl;
+
+    return 0;
+}
