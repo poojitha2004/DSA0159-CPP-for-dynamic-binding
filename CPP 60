@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string title;
+    string author;
+    int publicationYear;
+
+public:
+    // Constructor
+    Book(const string& bookTitle, const string& bookAuthor, int pubYear)
+        : title(bookTitle), author(bookAuthor), publicationYear(pubYear) {
+        cout << "Book created: \"" << title << "\" by " << author << ", published in " << publicationYear << "." << endl;
+    }
+
+    // Destructor
+    ~Book() {
+        cout << "Book destroyed: \"" << title << "\" by " << author << "." << endl;
+    }
+
+    // Method to display book details
+    void display() const {
+        cout << "Book Details:" << endl;
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Publication Year: " << publicationYear << endl;
+    }
+};
+
+int main() {
+    // Create a Book object
+    Book myBook("1984", "George Orwell", 1949);
+
+    // Display book details
+    myBook.display();
+
+    // Book is automatically destroyed at the end of scope
+    return 0;
+}
