@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>    // For fabs function
+using namespace std;
+
+// Function to find the absolute value of an integer
+int absolute(int value) {
+    return (value < 0) ? -value : value;
+}
+
+// Function to find the absolute value of a floating-point number
+double absolute(double value) {
+    return fabs(value); // Use std::fabs from cmath library
+}
+
+int main() {
+    // Test absolute function for integers
+    int intValue = -42;
+    cout << "Absolute value of integer " << intValue << " is: " << absolute(intValue) << endl;
+
+    // Test absolute function for floating-point numbers
+    double floatValue = -3.14;
+    cout << "Absolute value of floating-point number " << floatValue << " is: " << absolute(floatValue) << endl;
+
+    return 0;
+}
