@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Define the base class Person with a virtual function greet()
+class Person {
+public:
+    // Virtual function to be overridden in derived classes
+    virtual void greet() const {
+        cout << "Hello, I am a person." << endl;
+    }
+    
+    // Virtual destructor for proper cleanup
+    virtual ~Person() = default;
+};
+
+// Step 2: Define the derived class Student that overrides the greet() function
+class Student : public Person {
+public:
+    void greet() const override {
+        cout << "Hello, I am a student." << endl;
+    }
+};
+
+// Step 3: Define the derived class Teacher that overrides the greet() function
+class Teacher : public Person {
+public:
+    void greet() const override {
+        cout << "Hello, I am a teacher." << endl;
+    }
+};
+
+int main() {
+    // Create objects of Student and Teacher
+    Student stu;
+    Teacher tea;
+
+    // Step 4: Demonstrate polymorphism by using base class pointers
+    Person* p1 = &stu; // Pointer to base class Person pointing to Student object
+    Person* p2 = &tea; // Pointer to base class Person pointing to Teacher object
+
+    // Call greet() using base class pointers
+    cout << "Calling greet() function via base class pointer:" << endl;
+    p1->greet(); // Calls Student's greet()
+    p2->greet(); // Calls Teacher's greet()
+    
+    return 0;
+}
