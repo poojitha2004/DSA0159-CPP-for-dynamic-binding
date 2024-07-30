@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Step 1: Declare a char variable
+    char character = 'A';
+
+    // Step 2: Create a pointer to the char variable
+    char *ptr;
+
+    // Step 3: Assign the address of the char variable to the pointer
+    ptr = &character;
+
+    // Step 4: Display the value of the char using the pointer
+    cout << "The value of the char is: " << *ptr << endl;
+
+    return 0;
+}
