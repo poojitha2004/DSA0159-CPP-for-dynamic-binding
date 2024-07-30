@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to count the number of characters in a string manually
+int countCharacters(const string& str) {
+    int count = 0;
+    for (char ch : str) {
+        ++count;
+    }
+    return count;
+}
+
+int main() {
+    string input;
+
+    cout << "Enter a string: ";
+    getline(cin, input);
+
+    // Using the standard string method
+    cout << "Number of characters using length() method: " << input.length() << endl;
+
+    // Using the custom function
+    cout << "Number of characters using custom function: " << countCharacters(input) << endl;
+
+    return 0;
+}
