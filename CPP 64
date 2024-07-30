@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Person {
+private:
+    string name;
+    int age;
+
+public:
+    // Constructor
+    Person(const string& personName, int personAge) : name(personName), age(personAge) {}
+
+    // Friend function to overload the << operator
+    friend ostream& operator<<(ostream& os, const Person& person);
+};
+
+// Overload the << operator
+ostream& operator<<(ostream& os, const Person& person) {
+    os << "Name: " << person.name << ", Age: " << person.age;
+    return os;
+}
+
+int main() {
+    // Create a Person object
+    Person person1("Alice", 30);
+
+    // Output the Person object using the overloaded << operator
+    cout << person1 << endl;
+
+    return 0;
+}
