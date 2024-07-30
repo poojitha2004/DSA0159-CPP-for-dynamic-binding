@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Step 1: Declare a float variable
+    float value = 3.14f;
+
+    // Step 2: Create a pointer to the float variable
+    float *ptr;
+
+    // Step 3: Assign the address of the float variable to the pointer
+    ptr = &value;
+
+    // Step 4: Display the value of the float using the pointer
+    cout << "The value of the float is: " << *ptr << endl;
+    
+    return 0;
+}
