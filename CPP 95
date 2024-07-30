@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Define the base class Person with a virtual function work()
+class Person {
+public:
+    // Virtual function to be overridden in derived classes
+    virtual void work() const {
+        cout << "Person is working." << endl;
+    }
+    
+    // Virtual destructor for proper cleanup
+    virtual ~Person() = default;
+};
+
+// Step 2: Define the derived class Employee that overrides the work() function
+class Employee : public Person {
+public:
+    void work() const override {
+        cout << "Employee is working." << endl;
+    }
+};
+
+// Step 3: Define the derived class Manager that overrides the work() function
+class Manager : public Person {
+public:
+    void work() const override {
+        cout << "Manager is working." << endl;
+    }
+};
+
+int main() {
+    // Create objects of Employee and Manager
+    Employee emp;
+    Manager mgr;
+    
+    // Step 4: Demonstrate polymorphism by using base class pointers
+    Person* p1 = &emp; // Pointer to base class Person pointing to Employee object
+    Person* p2 = &mgr; // Pointer to base class Person pointing to Manager object
+
+    // Call work() using base class pointers
+    cout << "Calling work() function via base class pointer:" << endl;
+    p1->work(); // Calls Employee's work()
+    p2->work(); // Calls Manager's work()
+    
+    return 0;
+}
