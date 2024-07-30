@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>    // For pow function
+using namespace std;
+
+// Function to calculate the power of an integer
+int power(int base, int exponent) {
+    int result = 1;
+    for (int i = 0; i < exponent; ++i) {
+        result *= base;
+    }
+    return result;
+}
+
+// Function to calculate the power of a floating-point number
+double power(double base, double exponent) {
+    return pow(base, exponent); // Use std::pow from cmath library
+}
+
+int main() {
+    // Test power function for integers
+    int intBase = 2;
+    int intExponent = 3;
+    cout << "Power of integer " << intBase << " raised to " << intExponent << " is: " << power(intBase, intExponent) << endl;
+
+    // Test power function for floating-point numbers
+    double floatBase = 2.5;
+    double floatExponent = 3.0;
+    cout << "Power of floating-point number " << floatBase << " raised to " << floatExponent << " is: " << power(floatBase, floatExponent) << endl;
+
+    return 0;
+}
