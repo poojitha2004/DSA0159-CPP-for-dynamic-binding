@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Function to reverse a string
+string reverseString(const string& str) {
+    string reversed;
+    int length = str.length();
+    
+    for (int i = length - 1; i >= 0; --i) {
+        reversed += str[i];
+    }
+    
+    return reversed;
+}
+
+int main() {
+    string input;
+
+    cout << "Enter a string to reverse: ";
+    getline(cin, input);
+
+    string reversed = reverseString(input);
+    cout << "Reversed string: " << reversed << endl;
+
+    return 0;
+}
