@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountHolder;
+    double balance;
+
+public:
+    // Constructor
+    BankAccount(const string& holder, double initialBalance) : accountHolder(holder), balance(initialBalance) {
+        cout << "Account created for " << accountHolder << " with an initial balance of $" << balance << "." << endl;
+    }
+
+    // Destructor
+    ~BankAccount() {
+        cout << "Account for " << accountHolder << " is being closed." << endl;
+    }
+
+    // Method to deposit money
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited $" << amount << ". New balance: $" << balance << "." << endl;
+        } else {
+            cout << "Invalid deposit amount." << endl;
+        }
+    }
+
+    // Method to withdraw money
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "Withdrew $" << amount << ". New balance: $" << balance << "." << endl;
+        } else if (amount > balance) {
+            cout << "Insufficient funds for withdrawal." << endl;
+        } else {
+            cout << "Invalid withdrawal amount." << endl;
+        }
+    }
+
+    // Method to display account details
+    void display() const {
+        cout << "Account holder: " << accountHolder << endl;
+        cout << "Balance: $" << balance << endl;
+    }
+};
+
+int main() {
+    // Create a bank account with an initial balance
+    BankAccount account1("John Doe", 1000.0);
+
+    // Display account details
+    account1.display();
+
+    // Perform some transactions
+    account1.deposit(500.0);
+    account1.withdraw(200.0);
+    account1.withdraw(1500.0); // Trying to withdraw more than the balance
+
+    // Display account details again
+    account1.display();
+
+    // Account is automatically closed at the end of scope
+    return 0;
+}
