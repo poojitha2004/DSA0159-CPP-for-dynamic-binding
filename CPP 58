@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Car {
+private:
+    string make;
+    string model;
+    int year;
+    double mileage;
+
+public:
+    // Constructor
+    Car(const string& carMake, const string& carModel, int carYear, double carMileage)
+        : make(carMake), model(carModel), year(carYear), mileage(carMileage) {
+        cout << "Car created: " << year << " " << make << " " << model << " with " << mileage << " miles." << endl;
+    }
+
+    // Destructor
+    ~Car() {
+        cout << "Car destroyed: " << year << " " << make << " " << model << "." << endl;
+    }
+
+    // Method to drive the car
+    void drive(double miles) {
+        if (miles > 0) {
+            mileage += miles;
+            cout << "Drove " << miles << " miles. Total mileage: " << mileage << " miles." << endl;
+        } else {
+            cout << "Invalid mileage." << endl;
+        }
+    }
+
+    // Method to display car details
+    void display() const {
+        cout << "Car Details:" << endl;
+        cout << "Make: " << make << endl;
+        cout << "Model: " << model << endl;
+        cout << "Year: " << year << endl;
+        cout << "Mileage: " << mileage << " miles" << endl;
+    }
+};
+
+int main() {
+    // Create a car object
+    Car myCar("Toyota", "Corolla", 2021, 15000.0);
+
+    // Display car details
+    myCar.display();
+
+    // Drive the car
+    myCar.drive(120.5);
+    myCar.drive(-50.0); // Invalid mileage
+
+    // Display car details again
+    myCar.display();
+
+    // Car is automatically destroyed at the end of scope
+    return 0;
+}
