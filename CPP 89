@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    // Step 1: Declare a std::string variable
+    string text = "Hello, World!";
+
+    // Step 2: Create a pointer to the std::string variable
+    string *ptr;
+
+    // Step 3: Assign the address of the std::string variable to the pointer
+    ptr = &text;
+
+    // Step 4: Display the value of the std::string using the pointer
+    cout << "The value of the string is: " << *ptr << endl;
+
+    return 0;
+}
