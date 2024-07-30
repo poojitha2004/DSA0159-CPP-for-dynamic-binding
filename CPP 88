@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Step 1: Declare a double variable
+    double value = 123.456;
+
+    // Step 2: Create a pointer to the double variable
+    double *ptr;
+
+    // Step 3: Assign the address of the double variable to the pointer
+    ptr = &value;
+
+    // Step 4: Display the value of the double using the pointer
+    cout << "The value of the double is: " << *ptr << endl;
+
+    return 0;
+}
