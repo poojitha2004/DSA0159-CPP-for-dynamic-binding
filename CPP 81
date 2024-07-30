@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class Vehicle
+class Vehicle {
+protected:
+    string make;
+    string model;
+    int year;
+
+public:
+    // Constructor
+    Vehicle(string m = "", string mo = "", int y = 0) : make(m), model(mo), year(y) {}
+
+    // Getter and Setter for make
+    string getMake() const { return make; }
+    void setMake(const string& m) { make = m; }
+
+    // Getter and Setter for model
+    string getModel() const { return model; }
+    void setModel(const string& mo) { model = mo; }
+
+    // Getter and Setter for year
+    int getYear() const { return year; }
+    void setYear(int y) { year = y; }
+};
+
+// Derived class Car
+class Car : public Vehicle {
+private:
+    int seatingCapacity;
+    string fuelType;
+
+public:
+    // Constructor
+    Car(string m = "", string mo = "", int y = 0, int sc = 0, string ft = "")
+        : Vehicle(m, mo, y), seatingCapacity(sc), fuelType(ft) {}
+
+    // Getter and Setter for seatingCapacity
+    int getSeatingCapacity() const { return seatingCapacity; }
+    void setSeatingCapacity(int sc) { seatingCapacity = sc; }
+
+    // Getter and Setter for fuelType
+    string getFuelType() const { return fuelType; }
+    void setFuelType(const string& ft) { fuelType = ft; }
+};
+
+// Derived class Truck
+class Truck : public Vehicle {
+private:
+    double payloadCapacity;
+    double towingCapacity;
+
+public:
+    // Constructor
+    Truck(string m = "", string mo = "", int y = 0, double pc = 0.0, double tc = 0.0)
+        : Vehicle(m, mo, y), payloadCapacity(pc), towingCapacity(tc) {}
+
+    // Getter and Setter for payloadCapacity
+    double getPayloadCapacity() const { return payloadCapacity; }
+    void setPayloadCapacity(double pc) { payloadCapacity = pc; }
+
+    // Getter and Setter for towingCapacity
+    double getTowingCapacity() const { return towingCapacity; }
+    void setTowingCapacity(double tc) { towingCapacity = tc; }
+};
+
+int main() {
+    // Create a Car object
+    Car myCar("Toyota", "Camry", 2021, 5, "Gasoline");
+    cout << "Car Details:" << endl;
+    cout << "Make: " << myCar.getMake() << endl;
+    cout << "Model: " << myCar.getModel() << endl;
+    cout << "Year: " << myCar.getYear() << endl;
+    cout << "Seating Capacity: " << myCar.getSeatingCapacity() << endl;
+    cout << "Fuel Type: " << myCar.getFuelType() << endl;
+
+    // Create a Truck object
+    Truck myTruck("Ford", "F-150", 2022, 2000.0, 8000.0);
+    cout << "\nTruck Details:" << endl;
+    cout << "Make: " << myTruck.getMake() << endl;
+    cout << "Model: " << myTruck.getModel() << endl;
+    cout << "Year: " << myTruck.getYear() << endl;
+    cout << "Payload Capacity: " << myTruck.getPayloadCapacity() << " lbs" << endl;
+    cout << "Towing Capacity: " << myTruck.getTowingCapacity() << " lbs" << endl;
+
+    return 0;
+}
