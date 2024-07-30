@@ -1,0 +1,53 @@
+#include <iostream>
+#include <algorithm> // For std::sort
+using namespace std;
+
+// Function to sort an integer array
+void sortArray(int* arr, int size) {
+    sort(arr, arr + size); // Use std::sort from the algorithm library
+}
+
+// Function to sort a double array
+void sortArray(double* arr, int size) {
+    sort(arr, arr + size); // Use std::sort from the algorithm library
+}
+
+int main() {
+    // Test sorting of an integer array
+    int intArray[] = {5, 2, 9, 1, 5, 6};
+    int intSize = sizeof(intArray) / sizeof(intArray[0]);
+
+    cout << "Integer array before sorting: ";
+    for (int i = 0; i < intSize; ++i) {
+        cout << intArray[i] << " ";
+    }
+    cout << endl;
+
+    sortArray(intArray, intSize);
+
+    cout << "Integer array after sorting: ";
+    for (int i = 0; i < intSize; ++i) {
+        cout << intArray[i] << " ";
+    }
+    cout << endl;
+
+    // Test sorting of a double array
+    double doubleArray[] = {3.4, 2.1, 5.6, 4.5, 1.2};
+    int doubleSize = sizeof(doubleArray) / sizeof(doubleArray[0]);
+
+    cout << "Double array before sorting: ";
+    for (int i = 0; i < doubleSize; ++i) {
+        cout << doubleArray[i] << " ";
+    }
+    cout << endl;
+
+    sortArray(doubleArray, doubleSize);
+
+    cout << "Double array after sorting: ";
+    for (int i = 0; i < doubleSize; ++i) {
+        cout << doubleArray[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
