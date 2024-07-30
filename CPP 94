@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+// Step 1: Declare the function
+void greet(string name) {
+    cout << "Hello, " << name << "!" << endl;
+}
+
+int main() {
+    // Step 2: Declare a function pointer
+    void (*funcPtr)(string);
+
+    // Step 3: Assign the address of the function to the pointer
+    funcPtr = greet;
+
+    // Step 4: Call the function using the function pointer
+    cout << "Calling the function using the function pointer:" << endl;
+    funcPtr("Alice");
+
+    return 0;
+}
