@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>    // For gamma function
+using namespace std;
+
+// Function to find the factorial of an integer
+unsigned long long factorial(int n) {
+    if (n < 0) {
+        throw invalid_argument("Factorial is not defined for negative numbers");
+    }
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    unsigned long long result = 1;
+    for (int i = 2; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+// Function to find the factorial of a floating-point number using the gamma function
+double factorial(double n) {
+    if (n <= 0) {
+        throw invalid_argument("Factorial (gamma function) is not defined for non-positive numbers");
+    }
+    return tgamma(n + 1);  // Gamma function: Γ(n+1) = n!
+}
+
+int main() {
+    // Test integer factorial
+    int intValue = 5;
+    cout << "Factorial of integer " << intValue << " is: " << factorial(intValue) << endl;
+
+    // Test floating-point factorial
+    double floatValue = 5.5;
+    cout << "Factorial of floating-point number " << floatValue << " is: " << factorial(floatValue) << endl;
+
+    return 0;
+}
