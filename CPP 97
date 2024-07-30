@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cmath> // For M_PI constant
+using namespace std;
+
+// Step 1: Define the base class Shape with virtual functions area() and volume()
+class Shape {
+public:
+    virtual double area() const = 0;  // Pure virtual function for area
+    virtual double volume() const = 0; // Pure virtual function for volume
+
+    virtual ~Shape() = default;  // Virtual destructor for proper cleanup
+};
+
+// Step 2: Define the derived class Sphere that overrides the area() and volume() functions
+class Sphere : public Shape {
+private:
+    double radius;
+
+public:
+    // Constructor
+    Sphere(double r) : radius(r) {}
+
+    // Override area() function
+    double area() const override {
+        return 4 * M_PI * radius * radius;
+    }
+
+    // Override volume() function
+    double volume() const override {
+        return (4.0 / 3) * M_PI * radius * radius * radius;
+    }
+};
+
+// Step 3: Define the derived class Cylinder that overrides the area() and volume() functions
+class Cylinder : public Shape {
+private:
+    double radius;
+    double height;
+
+public:
+    // Constructor
+    Cylinder(double r, double h) : radius(r), height(h) {}
+
+    // Override area() function
+    double area() const override {
+        return 2 * M_PI * radius * (radius + height);
+    }
+
+    // Override volume() function
+    double volume() const override {
+        return M_PI * radius * radius * height;
+    }
+};
+
+int main() {
+    // Create objects of Sphere and Cylinder
+    Sphere sph(5.0);
+    Cylinder cyl(3.0, 7.0);
+
+    // Create pointers to Shape for polymorphism
+    Shape* s1 = &sph;
+    Shape* s2 = &cyl;
+
+    // Display area and volume for Sphere
+    cout << "Sphere:" << endl;
+    cout << "Area: " << s1->area() << endl;
+    cout << "Volume: " << s1->volume() << endl;
+
+    // Display area and volume for Cylinder
+    cout << "Cylinder:" << endl;
+    cout << "Area: " << s2->area() << endl;
+    cout << "Volume: " << s2->volume() << endl;
+
+    return 0;
+}
