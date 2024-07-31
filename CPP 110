@@ -1,0 +1,35 @@
+#include <iostream>
+#include <stdexcept> // For std::runtime_error and std::out_of_range
+
+// Function that may throw an exception
+void mayThrowException(int divisor) {
+    if (divisor == 0) {
+        throw std::runtime_error("Division by zero is not allowed.");
+    }
+    std::cout << "10 / " << divisor << " = " << 10 / divisor << std::endl;
+}
+
+int main() {
+    try {
+        // Try to perform a division with a non-zero divisor
+        mayThrowException(2); // No exception
+
+        // Try to perform a division with a zero divisor
+        mayThrowException(0); // This will throw an exception
+
+        // This line will not be executed if an exception is thrown above
+        std::cout << "This line will not be executed if an exception is thrown above." << std::endl;
+    }
+    catch (const std::runtime_error& e) {
+        // Handle runtime_error exceptions
+        std::cerr << "Caught runtime_error exception: " << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        // Handle any other exceptions derived from std::exception
+        std::cerr << "Caught general exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling." << std::endl;
+
+    return 0;
+}
