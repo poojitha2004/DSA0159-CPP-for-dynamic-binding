@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cmath>
+
+// Base class
+class Shape {
+public:
+    // Pure virtual function to be overridden by derived classes
+    virtual double area() const = 0; // Pure virtual function
+
+    // Virtual destructor
+    virtual ~Shape() {}
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+
+public:
+    // Constructor
+    Rectangle(double w, double h) : width(w), height(h) {}
+
+    // Override the area function
+    double area() const override {
+        return width * height;
+    }
+};
+
+// Derived class Circle
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    // Constructor
+    Circle(double r) : radius(r) {}
+
+    // Override the area function
+    double area() const override {
+        return M_PI * radius * radius;
+    }
+};
+
+int main() {
+    // Create objects of derived classes
+    Rectangle myRectangle(5.0, 3.0); // width and height
+    Circle myCircle(4.0);            // radius
+
+    // Pointers to base class
+    Shape* shape1 = &myRectangle;
+    Shape* shape2 = &myCircle;
+
+    // Call area() function via base class pointers
+    std::cout << "Rectangle area: " << shape1->area() << std::endl;  // Outputs: Rectangle area: 15
+    std::cout << "Circle area: " << shape2->area() << std::endl;     // Outputs: Circle area: 50.2655
+
+    return 0;
+}
