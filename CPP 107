@@ -1,0 +1,40 @@
+#include <iostream>
+#include <exception>  // For std::exception and standard exceptions
+#include <stdexcept>  // For specific exceptions like std::runtime_error
+
+void functionThatMayThrow(int value) {
+    if (value == 0) {
+        throw std::invalid_argument("Value cannot be zero.");
+    } else if (value < 0) {
+        throw std::out_of_range("Value cannot be negative.");
+    } else if (value > 100) {
+        throw std::overflow_error("Value exceeds the maximum limit of 100.");
+    }
+    std::cout << "The value is: " << value << std::endl;
+}
+
+int main() {
+    try {
+        // Trying different cases to demonstrate exception handling
+        functionThatMayThrow(50);  // No exception
+        functionThatMayThrow(0);   // std::invalid_argument
+        functionThatMayThrow(-1);  // std::out_of_range
+        functionThatMayThrow(150); // std::overflow_error
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid argument: " << e.what() << std::endl;
+    }
+    catch (const std::out_of_range& e) {
+        std::cerr << "Out of range error: " << e.what() << std::endl;
+    }
+    catch (const std::overflow_error& e) {
+        std::cerr << "Overflow error: " << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "General exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling." << std::endl;
+
+    return 0;
+}
