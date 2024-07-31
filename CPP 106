@@ -1,0 +1,47 @@
+#include <iostream>
+#include <exception>
+#include <string>
+
+// User-defined exception class
+class MyCustomException : public std::exception {
+private:
+    std::string message;
+
+public:
+    // Constructor to initialize the custom message
+    MyCustomException(const std::string& msg) : message(msg) {}
+
+    // Override the what() method to provide the custom exception message
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
+};
+
+// Function that throws a MyCustomException
+void riskyOperation(bool triggerException) {
+    if (triggerException) {
+        throw MyCustomException("Something went wrong in riskyOperation!");
+    }
+    std::cout << "riskyOperation completed successfully." << std::endl;
+}
+
+int main() {
+    try {
+        std::cout << "Starting main try block" << std::endl;
+
+        // Attempt to perform a risky operation that may throw a custom exception
+        riskyOperation(true); // Change to false to avoid throwing an exception
+
+        std::cout << "This line will not be executed if an exception is thrown" << std::endl;
+
+    } catch (const MyCustomException& e) {
+        std::cout << "Caught MyCustomException: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        // Catch any other standard exceptions
+        std::cout << "Caught an exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling" << std::endl;
+
+    return 0;
+}
