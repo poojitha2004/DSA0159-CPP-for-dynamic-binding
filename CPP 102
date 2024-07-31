@@ -1,0 +1,45 @@
+#include <iostream>
+
+// Base class
+class Animal {
+public:
+    // Virtual function to be overridden by derived classes
+    virtual void speak() = 0; // Pure virtual function
+
+    // Virtual destructor
+    virtual ~Animal() {}
+};
+
+// Derived class Cat
+class Cat : public Animal {
+public:
+    // Override the speak function
+    void speak() override {
+        std::cout << "Cat says: Meow" << std::endl;
+    }
+};
+
+// Derived class Dog
+class Dog : public Animal {
+public:
+    // Override the speak function
+    void speak() override {
+        std::cout << "Dog says: Woof" << std::endl;
+    }
+};
+
+int main() {
+    // Create objects of derived classes
+    Cat myCat;
+    Dog myDog;
+
+    // Pointers to base class
+    Animal* animal1 = &myCat;
+    Animal* animal2 = &myDog;
+
+    // Call speak() function via base class pointers
+    animal1->speak(); // Outputs: Cat says: Meow
+    animal2->speak(); // Outputs: Dog says: Woof
+
+    return 0;
+}
