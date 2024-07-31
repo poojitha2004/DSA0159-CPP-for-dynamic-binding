@@ -1,0 +1,42 @@
+#include <iostream>
+#include <stdexcept> // For standard exception types like std::runtime_error
+
+// Function that throws an exception
+void riskyFunction(int number) {
+    if (number < 0) {
+        throw std::invalid_argument("Negative numbers are not allowed.");
+    } else if (number == 0) {
+        throw std::runtime_error("Zero is an invalid value.");
+    } else if (number > 100) {
+        throw std::out_of_range("Value exceeds the upper limit of 100.");
+    }
+
+    std::cout << "The number is: " << number << std::endl;
+}
+
+int main() {
+    try {
+        // Testing with different values
+        riskyFunction(10);  // No exception
+        riskyFunction(-5);  // Throws std::invalid_argument
+        riskyFunction(0);   // Throws std::runtime_error
+        riskyFunction(150); // Throws std::out_of_range
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid argument error: " << e.what() << std::endl;
+    }
+    catch (const std::runtime_error& e) {
+        std::cerr << "Runtime error: " << e.what() << std::endl;
+    }
+    catch (const std::out_of_range& e) {
+        std::cerr << "Out of range error: " << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "General exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling." << std::endl;
+
+    return 0;
+}
+
