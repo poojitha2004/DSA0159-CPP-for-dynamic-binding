@@ -1,0 +1,40 @@
+#include <iostream>
+#include <exception>  // For std::exception
+#include <stdexcept>  // For standard exception types like std::runtime_error and std::out_of_range
+
+// Function that demonstrates throwing various types of exceptions
+void throwVariousExceptions(int value) {
+    if (value < 0) {
+        throw std::invalid_argument("Negative value error");
+    } else if (value == 0) {
+        throw std::runtime_error("Runtime error due to zero value");
+    } else if (value > 100) {
+        throw std::out_of_range("Value out of range");
+    }
+    std::cout << "Value is within acceptable range: " << value << std::endl;
+}
+
+int main() {
+    try {
+        // Test with different values to trigger various exceptions
+        throwVariousExceptions(-1); // Will throw std::invalid_argument
+        throwVariousExceptions(0);  // Will throw std::runtime_error
+        throwVariousExceptions(101); // Will throw std::out_of_range
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Caught invalid_argument exception: " << e.what() << std::endl;
+    }
+    catch (const std::runtime_error& e) {
+        std::cerr << "Caught runtime_error exception: " << e.what() << std::endl;
+    }
+    catch (const std::out_of_range& e) {
+        std::cerr << "Caught out_of_range exception: " << e.what() << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Caught general exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling." << std::endl;
+
+    return 0;
+}
