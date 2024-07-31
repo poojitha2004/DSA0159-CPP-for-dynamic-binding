@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stdexcept>
+
+// Function that throws different types of exceptions
+void generateException(int code) {
+    if (code == 1) {
+        throw std::runtime_error("Runtime error occurred");
+    } else if (code == 2) {
+        throw std::logic_error("Logic error occurred");
+    } else if (code == 3) {
+        throw std::exception();
+    } else {
+        throw std::out_of_range("Out of range error");
+    }
+}
+
+int main() {
+    try {
+        std::cout << "Outer try block" << std::endl;
+        try {
+            std::cout << "Inner try block" << std::endl;
+            
+            // Call function that may throw an exception
+            generateException(2); // Change the argument to test different exceptions
+
+            std::cout << "This line will not be executed if an exception is thrown" << std::endl;
+
+        } catch (const std::runtime_error& e) {
+            std::cout << "Caught a runtime_error in the inner catch block: " << e.what() << std::endl;
+        } catch (const std::logic_error& e) {
+            std::cout << "Caught a logic_error in the inner catch block: " << e.what() << std::endl;
+        }
+
+        // This block can handle exceptions not caught in the inner catch block
+        std::cout << "Continue execution after inner try-catch" << std::endl;
+        generateException(4); // This will be caught by the outer catch block
+
+    } catch (const std::exception& e) {
+        std::cout << "Caught an exception in the outer catch block: " << e.what() << std::endl;
+    }
+
+    std::cout << "Program continues after try-catch blocks" << std::endl;
+
+    return 0;
+}
